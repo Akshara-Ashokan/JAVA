@@ -1,0 +1,31 @@
+import java.util.Scanner;
+class Rectangle{
+        int l,b;
+        void getdata(int length,int breadth)
+        {
+                l=length;
+                b=breadth;
+        }
+        void calc(){
+        int area=l*b;
+        System.out.println("Area of rectangle:"+area);
+        int peri=2*(l+b);
+        System.out.println("Perimeter of rectangle:"+peri);
+        }
+}
+class RectDemo
+{
+        public static void main(String arg[])
+        {
+                int length,breadth;
+                Scanner ob=new Scanner(System.in);
+                System.out.println("enter length:");
+                length=ob.nextInt();
+                System.out.println("enter breadth:");
+                breadth=ob.nextInt();
+                Rectangle r=new Rectangle();
+                r.getdata(length,breadth);
+                r.calc();
+        }
+}
+
