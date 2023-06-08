@@ -1,0 +1,49 @@
+import java.util.*;
+class Product
+{
+        int pcode;
+        String pname;
+        double price;
+        double lowest;
+        void data()
+        {
+                Scanner sc =new Scanner(System.in);
+                System.out.println("\nEnter product code: ");
+                pcode=sc.nextInt();
+                System.out.println("\nEnter product name: ");
+                pname=sc.next();
+                System.out.println("\nEnter price: ");
+                price=sc.nextDouble();
+        }
+                void display()
+                {
+                System.out.println(pcode+"\t\t" +pname+ "\t\t"+price);
+                }
+            static void findLowest(product a1,product a2, product a3){
+            if(a1.price<=a2.price && a1.price<=a3.price){
+                System.out.println("\nProduct 1 is of the lowest price!");
+            }
+            else if(a2.price<=a1.price && a2.price<=a3.price){
+                System.out.println("\nProduct 2 is of the lowest price!");
+            }
+            else{
+                System.out.println("\nProduct 3 is of the lowest price!");
+            }
+           }
+          public static void main(String[] args){
+                product obj1 = new product();
+                   product obj2 = new product();
+                product obj3 = new product();
+                System.out.println("\nenter the first product details");
+                obj1.data();
+                System.out.println("\nenter the second product details");
+                obj2.data();
+                System.out.println("\nenter the third  product details");
+                obj3.data();
+                System.out.println("Product Information:\n Product_Code\tProduct_Name\tProduct_Price");
+                obj1.display();
+                obj2.display();
+                obj3.display();
+                findLowest(obj1,obj2,obj3);
+            }
+        }
