@@ -1,0 +1,65 @@
+import java.util.*;
+ class BankAccount {
+     String name;
+     int accountNumber;
+     String accountType;
+     int balance;
+
+    BankAccount() {
+        this.name = "";
+        this.accountNumber =0;
+        this.accountType = "";
+        this.balance = 0;
+    }
+
+    BankAccount(String name, int  accountNumber, String accountType, int balance) {
+        this.name = name;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.balance = balance;
+    }
+    
+     void deposit(int amount) {
+        this.balance += amount;
+        System.out.println("Deposit successful. Current balance: " + this.balance);
+    }
+
+     void withdraw(int amount) {
+        if (this.balance >= amount) {
+            this.balance -= amount;
+            System.out.println("Withdrawal successful. Current balance: " + this.balance);
+        } else {
+            System.out.println("Insufficient balance.");
+        }
+    }
+    
+    public void display() {
+        System.out.println("Name: " + this.name);
+        System.out.println("Balance: " + this.balance);
+    }
+}
+
+
+class bank{
+    public static void main(String[] args) {
+        BankAccount acc=new BankAccount();
+        acc.display();
+        Scanner s= new Scanner(System.in);
+        System.out.println("Enter the name:");
+        String name=s.next();
+        System.out.println("Enter the account number:");
+        int no=s.nextInt();
+        System.out.println("Enter the type of account:");
+        String type=s.next();
+
+        BankAccount account = new BankAccount(name,no,type,0);
+        System.out.println("Enter the amount to deposit:");
+        int dep=s.nextInt();
+        account.deposit(dep);
+        System.out.println("Enter the amount to withdraw:");
+        int amount=s.nextInt();
+
+        account.withdraw(amount);
+        account.display();
+    }
+}
