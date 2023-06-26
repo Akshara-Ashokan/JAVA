@@ -1,0 +1,50 @@
+import com.mycompany.student.Student;
+import java.util.Scanner;
+class prgm11{
+        public static void main(String[] args){
+                Scanner sc=new Scanner(System.in);
+                int id;
+                String name,grade;
+                System.out.println("Enter student id:");
+                id=sc.nextInt();
+                System.out.println("enter student name:");
+                name=sc.next();
+                System.out.println("enter student grade:");
+                grade=sc.next();
+                Student student=new Student(id,name,grade);
+                student.get(id,name,grade);
+                student.set();
+
+        }
+}
+
+
+
+//Student.java
+
+
+package com.mycompany.student;
+public class Student{
+        private int id;
+        private String name;
+        private String grade;
+        public Student(int id,String name,String grade){
+                this.id=id;
+                this.name=name;
+                this.grade=grade;
+        }
+        public void get(int id,String name,String grade){
+                this.id=id;
+                this.name=name;
+                this.grade=grade;
+        }
+        public void set(){ 
+                System.out.println("\nStudent Details:");
+                System.out.println("Student ID: " + id);
+                System.out.println("Student Name: " + name);
+                System.out.println("Student Grade: " + grade);  
+        }
+
+
+}
+
