@@ -1,0 +1,87 @@
+import java.util.Scanner;
+class StackUnderflowException extends Exception {
+ public StackUnderflowException(String message) {
+ super(message);
+ }}
+class Stack {
+ private int[] array;
+ private int top;
+ private int capacity;
+ public Stack(int capacity) {
+ this.capacity = capacity;
+ this.array = new int[capacity];
+ this.top = -1;
+ }
+ public void push(int element) throws StackOverflowException {
+ if (isFull()) {
+ throw new StackOverflowException("Stack is full. Cannot push element.");
+ }
+ array[++top] = element;
+ }public int pop() throws StackUnderflowException {
+32
+ if (isEmpty()) {
+ throw new StackUnderflowException("Stack is empty. Cannot pop element.");
+ }
+ return array[top--];
+ }
+ public void display() {
+ if (isEmpty()) {
+ System.out.println("Stack is empty.");
+ return;
+ }
+ System.out.print("Stack: ");
+ for (int i = top; i >= 0; i--) {
+ System.out.print(array[i] + " ");
+ }
+ System.out.println();
+ public boolean isFull() {
+ return top == capacity - 1;
+ }
+ public boolean isEmpty() {
+ return top == -1;
+ }}
+class StackOverflowException extends Exception {
+ public StackOverflowException(String message) {
+ super(message);
+ }}
+public class Main {
+ public static void main(String[] args) {
+ int stackSize = 5;
+ Stack stack = new Stack(stackSize);
+ Scanner scanner = new Scanner(System.in);
+ while (true) {
+ System.out.println("Enter your choice:");
+33
+ System.out.println("1. Push");
+ System.out.println("2. Pop");
+ System.out.println("3. Display");
+ System.out.println("4. Exit");
+ int choice = scanner.nextInt();
+ try {
+ switch (choice) {
+ case 1:
+ System.out.println("Enter the number to push:");
+ int number = scanner.nextInt();
+ stack.push(number);
+ break;
+ case 2:
+ int poppedElement = stack.pop();
+ System.out.println("Popped number: " + poppedElement);
+ break;
+ case 3:
+ stack.display();
+ break;
+ case 4:
+ scanner.close();
+ System.exit(0);
+ default:
+ System.out.println("Invalid choice. Please try again.");
+ }
+ } catch (StackOverflowException e) {
+ System.out.println("Error: " + e.getMessage());
+ } catch (StackUnderflowException e) {
+ System.out.println("Error: " + e.getMessage());
+ }
+ }
+ }
+}
