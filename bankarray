@@ -1,0 +1,78 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+class BankAccount {
+private int accountNumber;
+private double balance;
+public BankAccount(int accountNumber, double initialBalance) {
+this.accountNumber = accountNumber;
+this.balance = initialBalance;
+}
+public int getAccountNumber() {
+return accountNumber;
+}
+public double getBalance() {
+return balance;
+}}
+public class Bank {
+
+private String bankName;
+private ArrayList<BankAccount> bankAccounts;
+public Bank(String bankName) {
+this.bankName = bankName;
+this.bankAccounts = new ArrayList<>();
+}
+public void addBankAccount(BankAccount account) {
+bankAccounts.add(account);
+}
+public void removeBankAccount(int accountNumber) {
+for (int i = 0; i < bankAccounts.size(); i++) {
+BankAccount account = bankAccounts.get(i);
+if (account.getAccountNumber() == accountNumber) {
+bankAccounts.remove(i);
+break;
+}}}
+public void displayBankAccounts() {
+System.out.println("Bank Accounts in " + bankName + ":");
+for (BankAccount account : bankAccounts) {
+System.out.println("Account Number: " + account.getAccountNumber() + ", Balance: 
+" + account.getBalance());
+}}
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+Bank bank = new Bank("MyBank");
+while (true) {
+System.out.println("\n------ Menu ------");
+System.out.println("1. Add Bank Account");
+System.out.println("2. Remove Bank Account");
+System.out.println("3. Display Bank Accounts");
+System.out.println("4. Exit");
+System.out.print("Enter your choice: ");
+
+int choice = scanner.nextInt();
+switch (choice) {
+case 1:
+System.out.print("Enter account number: ");
+int accountNumber = scanner.nextInt();
+System.out.print("Enter initial balance: ");
+double initialBalance = scanner.nextDouble();
+BankAccount newAccount = new BankAccount(accountNumber, 
+initialBalance);
+bank.addBankAccount(newAccount);
+System.out.println("Account added successfully!");
+break;
+case 2:
+System.out.print("Enter account number to remove: ");
+int accountToRemove = scanner.nextInt();
+bank.removeBankAccount(accountToRemove);
+System.out.println("Account removed successfully!");
+break;
+case 3:
+bank.displayBankAccounts();
+break;
+case 4:
+System.out.println("Exiting program...");
+System.exit(0);
+break;
+default:
+System.out.println("Invalid choice. Please try again.");
+}}}}
